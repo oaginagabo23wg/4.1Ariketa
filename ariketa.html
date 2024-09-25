@@ -37,9 +37,8 @@
 
         // Bilatu letra konkretu batez hasten diran abesti guztiak, lehenik eta behin balioren bat badagoen zihurtatuz.
         let flattenedKantak = kantak.flat();
-        let filteredKantak = flattenedKantak.filter(element => {
-            return typeof element === 'string' && element.startsWith("S");
-        });
+        let filteredKantak = flattenedKantak.filter(element => element.toLowerCase().startsWith('s'));
+
 
         // Array berri batean, ordenatu Z-tik A-ra array guztien abesti guztiak. Inprimatu arrayaren posizioa eta bere balioa.
         let sortedKantak = kantak.flat().slice().sort();
