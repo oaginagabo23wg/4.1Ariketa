@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrayak</title>
+</head>
+<body>
+    <script>
+        let taldeak = ["Extremoduro", "Pink floyd", "La raiz"];
+        let kantak = [
+            "So payaso",
+            "Si te vas",
+            "Poles apart",
+            "Wish you were here",
+            ["Achilles Come Down", "La hoguera de los contintentes"],
+        ];
+
+        // Aldatu 2 bailo, 1 maila nagusikoa, eta bestea 2. mailako arrayean dagoen balio batena.
+        taldeak[2] = "Gang of youths";
+        kantak[4][0] = "Achilles Come Down";
+        
+       // Sortu array bat, beste array guztien informazioa duena, eta abesti guztiak maila berean daudena (ez egotea arrayrik array baten barruan), eta inprimatu testu bezela
+        let dena = taldeak.join(", ") + ", " + kantak.flat().join(", ");
+
+        // Funtzio bakarra erabiliz, kendu array baten lehenengo 2 balioak, eta gehitu zerrendako azken biena, dena array berri batean, originala aldatu gabe.
+        let kendu2balio = function (array) {
+            let firstTwo = [array[0], array[1]];
+            let lastTwo = [array[array.length - 2], array[array.length - 1]];
+
+            array[0] = lastTwo[0];
+            array[1] = lastTwo[1];
+
+            return array;
+        };
+        let berria = kendu2balio(kantak);
+
+        // Bilatu letra konkretu batez hasten diran abesti guztiak, lehenik eta behin balioren bat badagoen zihurtatuz.
+        let flattenedKantak = kantak.flat();
+        let filteredKantak = flattenedKantak.filter(element => {
+            return typeof element === 'string' && element.startsWith("S");
+        });
+
+        // Array berri batean, ordenatu Z-tik A-ra array guztien abesti guztiak. Inprimatu arrayaren posizioa eta bere balioa.
+        let sortedKantak = kantak.flat().slice().sort();
+
+        // Array baten izenaren luzera 10 baino handiago bada, soberan dauden letran kendu eta "..." jarri
+        let trimmedKantak = kantak.map(element => {
+            if (typeof element === 'string' && element.length > 10) {
+                return element.substring(0, 10) + '...'; 
+            }
+            return element;
+        });
+
+        console.log("Mugitutako kantak: ", kantak);
+        console.log("S-rekin hasten diren kantak: ", filteredKantak);
+        console.log("Z-tik A-ra ordenatuta: ", sortedKantak);
+        console.log("Moztuta: ", trimmedKantak);
+    </script>
+</body>
+</html>
